@@ -128,3 +128,99 @@ function convert() {
         result.textContent = "Por favor, insira um valor válido.";
     }
 }
+//Função de tradução de ingrediente
+const deepLApiKey = '05d198e1-fb0a-48ae-9615-40b5d996071c:fx';
+
+    async function translateText(text, targetLang = 'pt-br') {
+        const url = 'https://api-free.deepl.com/v2/translate';
+        const parametro = new URLSearchParams({
+            auth_key: deepLApiKey,
+            text: text,
+            target_lang: targetLang,
+        });
+
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: parametro,
+            });
+            const data = await response.json();
+            return data.translations[0].text; 
+        } catch (error) {
+            console.error('Erro na tradução:', error);
+            return text;
+        }
+    }
+
+    
+    async function displayResults(drinks) {
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = ''; // Limpa os resultados anteriores
+        resultsDiv.style.display = 'block'; // Mostra a área de resultados
+    
+        document.getElementById('home-button').style.display = 'inline-block'; // Mostra o botão Home
+    
+        if (drinks === null) {
+            resultsDiv.innerHTML = '<p>Nenhum drink encontrado.</p>';
+            return;
+        }
+    
+        for (const drink of drinks) {
+            const drinkDiv = document.createElement('div');
+            drinkDiv.className = 'drink';
+    
+            // Traduzindo o nome e as instruções do drink
+            const translatedName = await translateText(drink.strDrink);
+            const translatedInstructions = await translateText(drink.strInstructions);
+    
+            // Traduzindo os ingredientes
+            const translatedIngredients = await getIngredientsList(drink);
+    
+            drinkDiv.innerHTML = `
+                <h3>${translatedName}</h3>
+                <img src="${drink.strDrinkThumb}" alt="${drink.strDrink}" width="100">
+                <h4>Ingredientes:</h4>
+                <ul>${translatedIngredients}</ul>
+                <p>${translatedInstructions}</p>
+            `;
+            resultsDiv.appendChild(drinkDiv);
+        }
+    
+        // Scroll automático para os resultados
+        resultsDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+
+
+const TraduCustom = {
+    'Lime': 'Limão',
+    'Sugar': 'Açúcar',
+    'Cachaca': 'Cachaça',
+};
+
+
+function aplicarTraducaoCustom(text) {
+    return TraduCustom[text] || text;
+}
+
+async function getIngredientsList(drink) {
+    let ingredients = '';
+    for (let i = 1; i <= 15; i++) {
+        const ingredient = drink[`strIngredient${i}`];
+        const measure = drink[`strMeasure${i}`];
+        if (ingredient) {
+
+            let translatedIngredient = aplicarTraducaoCustom(ingredient);
+
+
+            if (translatedIngredient === ingredient) {
+                translatedIngredient = await translateText(ingredient);
+            }
+
+            ingredients += `<li>${measure ? measure : ''} ${translatedIngredient}</li>`;
+        }
+    }
+    return ingredients;
+}
+    
