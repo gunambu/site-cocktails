@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'RetroFont', Arial, sans-serif;
+    
+}
+
+
+@font-face {
+    font-family: 'RetroFont';
+    src: url('fonts/GiantoliSerif.ttf') format('truetype');
+}
+
+
+
+#drunk_panda{
+    width: 300px;
+    height: 300px;
+    display: block;
+    margin: 50px;
+    border-radius: 8px;
+    object-position: center;
+
+}
+
+#panda_alter{
+    padding: 10px 5px;
+    border: none;
+    background-color: #45a049;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#reset_Panda{
+    padding: 10px 77px;
+    border: none;
+    background-color: #45a049;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.status_panda{
+    background-image: url('images/background-bar.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+}
+
+a{
+    position: absolute;
+    top: 20px;
+    left: 80px;
+    padding: 100px 200px;
+    background-color: rgba(0, 0, 0, 0);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    background-image: url('images/reto.png');
+    background-size: 200px 200px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 90px;
+    padding-top: 80px;
+    z-index: 10;
+
+}

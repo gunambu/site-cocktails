@@ -6,7 +6,7 @@
 
 @font-face {
     font-family: 'RetroFont';
-    src: url('fonts/RetroVintage-Regular.otf') format('truetype');
+    src: url('fonts/GiantoliSerif.ttf') format('truetype');
 }
 
 body, html {
@@ -34,7 +34,7 @@ body, html {
     width: 50%;
     max-width: 600px;
     border-radius: 8px;
-    margin-left: -600px;
+    margin-right: 700px;
     margin-bottom: 200px;
 }
 
@@ -67,7 +67,7 @@ h1 {
     width: 200px;      
     height: auto;      
     position: absolute; 
-    top: 9px;         
+    top:9px;         
     left: 80px;    
 }
 
@@ -108,6 +108,8 @@ h1 {
     z-index: 1000;
     margin-top: 275px;
     margin-left: -110px;
+    font-family: 'RetroFont', Arial, sans-serif;
+    font-size: large;
 }
 
 .suggestion-item {
@@ -132,6 +134,8 @@ h1 {
     transform: translateY(-50%);
     border-radius: 8px;
     margin-right: 100px;
+    font-family: 'RetroFont', Arial, sans-serif;
+    font-size: large;
 }
 
 .drink {
@@ -152,4 +156,88 @@ h1 {
     list-style-type: none;
     padding: 0;
     margin: 10px 0;
+}
+
+a{
+    color: #ffffff;
+    position: fixed; 
+    left: 380px;
+    bottom: 30px;
+    font-size: 23px;
+    text-decoration: none; 
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.flex-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px; 
+    padding: 20px;
+    background-color: #f4f4f4; 
+    border-radius: 8px;
+}
+
+.panda-button button {
+    background: #ff6347;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.panda-button button:hover {
+    background: #e55347;
+}
+
+.convert {
+    background: rgba(0, 0, 0, 0.3);
+    background-size: cover;
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 300px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    bottom: 30px; 
+    left: 30px;   
+    z-index: 10; 
+    
+}
+
+.convert h1 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.convert label,
+.convert input,
+.convert button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.convert input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.convert button {
+    background: #45a049;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.convert button:hover {
+    background: #45a049;
 }

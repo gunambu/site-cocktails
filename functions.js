@@ -116,3 +116,15 @@ document.getElementById('search-input').addEventListener('input', function() {
         document.getElementById('suggestions').style.display = 'none';
     }
 });
+
+function convert() {
+    const ounces = document.getElementById("ounces").value;
+    const grams = (ounces * 28.3495).toFixed(2); // 1 onça = 28.3495 gramas
+    const result = document.getElementById("result");
+
+    if (ounces) {
+        result.textContent = `${ounces} onça(s) é igual a ${grams} grama(s).`;
+    } else {
+        result.textContent = "Por favor, insira um valor válido.";
+    }
+}
